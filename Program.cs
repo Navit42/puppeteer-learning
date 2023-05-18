@@ -19,23 +19,11 @@ namespace pupetter.Training
         public async Task PuppeteerTrain()
         {
             /*
-             * Funções a serem chamadas:
-             * encontrar o chromium. se não houver, fazer o download.
-             * abrir o chromium no link do greatpages
-             * fazer login
-             * copiar pagina 
-             * abrir pagina copiada
-             * mudar o nome da pagina
-             * abrir o editor
-             * editar o texto
-             * abrir o controle de formulario
-             * editar o link
-             * abrir o formulario de integração
-             * fazer a integação como esperado
+             * aprender a se conectar com o chromium
              */
 
+            //verificar e baixar o chromium
             var chromiumPath = Path.Combine(Directory.GetCurrentDirectory(), "Chromium");
-
             Console.WriteLine($"Verificando o diretório do chromium: {chromiumPath}");
             if (!Directory.Exists(chromiumPath))
             {
@@ -43,18 +31,19 @@ namespace pupetter.Training
 
             }
             Console.WriteLine("OK");
-
             var browserFetcherOptions = new BrowserFetcherOptions { Path = chromiumPath };
             var browserFetcher = new BrowserFetcher(browserFetcherOptions);
             var executablePath = browserFetcher.GetExecutablePath(BrowserFetcher.DefaultChromiumRevision);
             Console.WriteLine($"Verificando a existencia do chromium: {executablePath}");
-
             if (!File.Exists(executablePath))
             {
                 Console.WriteLine("baixando chromium");
                 await browserFetcher.DownloadAsync(BrowserFetcher.DefaultChromiumRevision);
             }
             Console.WriteLine("OK");
+
+
+
 
 
 
